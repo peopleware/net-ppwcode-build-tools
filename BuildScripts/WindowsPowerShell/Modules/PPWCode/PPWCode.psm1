@@ -389,9 +389,9 @@ as the default remote 'origin'.
             }
             
             # do the clone
-            # clone the repo, and checkout the git-master branch
+            # clone the repo, and checkout the master branch
             # save the remote used for the clone as 'origin'
-            Exec { & git.exe clone -b git-master -o origin $cloneUri $($repodata.folder) }
+            Exec { & git.exe clone -b master -o origin $cloneUri $($repodata.folder) }
             
             # add second remote uri if asked
             if ($second -ne $null) {
@@ -1238,7 +1238,7 @@ function Update-PPWCodeModule {
 Installs the updated version of the PPWCode PowerShell module.
 .DESCRIPTION
 This command updates the 'PPWCode-tools' to the most recent version (branch
-'git-master'), takes the PowerShell module and updates this module in the
+'master'), takes the PowerShell module and updates this module in the
 default module location. After installation the command forces a reload of
 the PPWCode module.
 .PARAMETER noupdate
@@ -1276,7 +1276,7 @@ module, places this in the default location and forces a reload of the module.
         # make sure repo is uptodate
         if (-not $noupdate) {
             Chatter 'Updating repo tools' 1
-            Exec { & git.exe checkout git-master }
+            Exec { & git.exe checkout master }
             Exec { & git.exe pull --ff-only origin }
         }
 
