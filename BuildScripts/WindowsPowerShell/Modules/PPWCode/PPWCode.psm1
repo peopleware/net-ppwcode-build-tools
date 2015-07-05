@@ -354,7 +354,10 @@ as the default remote 'origin'.
         [Parameter(Mandatory=$false)]
         [ValidateSet('https','ssh')]
         [string[]]
-        $protocol = @('https')
+        $protocol = @('https'),
+
+        [string]
+        $user = ''
     )
 
     # origin and naming
@@ -388,6 +391,10 @@ as the default remote 'origin'.
             
             $httpsUri = "https://github.com/peopleware/$($repodata.git).git"
             $sshUri = "git@github.com:peopleware/$($repodata.git).git"
+            
+            if ($user -ne '') {
+                $httpsUri = "https://$($user)@github.com/peopleware/$($repodata.git).git"
+            }
             
             Chatter "Https: $httpsUri" 3
             Chatter "SSH:   $sshUri" 3
