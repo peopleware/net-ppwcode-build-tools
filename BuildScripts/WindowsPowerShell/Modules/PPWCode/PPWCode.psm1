@@ -1378,8 +1378,8 @@ working or staging area.
             'wcf',
             'test',
             'clr',
-            'stylecop',,
-			'appconfigtemplate'
+            'stylecop',
+			'appconfigtemplate',
 			'all'
             )]
         [string[]]
