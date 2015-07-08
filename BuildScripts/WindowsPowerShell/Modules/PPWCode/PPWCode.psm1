@@ -297,6 +297,16 @@ $PPWCodeRepositories = @{
 		wiki = $false
         psake = $false
     }
+	 'appconfigtemplate' = @{
+        project = 'PPWCode.Util.Appconfigtemplate'
+		name = 'ppwcode-util-Appconfigtemplate'
+		folder = 'ppwcode-util-Appconfigtemplate'
+		git = 'net-ppwcode-util-Appconfigtemplate'
+		dependencies = @()
+        bookmarks = '02.Tools.3'
+		wiki = $false
+        psake = $false
+    }
 }
 
 #endregion
@@ -643,7 +653,8 @@ the remaining parameters.
             'wcf',
             'test',
             'clr',
-            'stylecop'
+            'stylecop',
+			'appconfigtemplate'
             )]
         [string[]]
         $solution,
@@ -764,7 +775,8 @@ Uses the default parameter values for the remaining parameters.
             'wcf',
             'test',
             'clr',
-            'stylecop'
+            'stylecop',
+			'appconfigtemplate'
             )]
         [string[]]
         $solution,
@@ -881,7 +893,8 @@ Uses the default parameter values for the remaining parameters.
             'wcf',
             'test',
             'clr',
-            'stylecop'
+            'stylecop',
+			'appconfigtemplate'
             )]
         [string[]]
         $solution,
@@ -918,14 +931,12 @@ Uses the default parameter values for the remaining parameters.
             if ($uselocal) {
                 $myrepos = @($($global:PPWCodeCfg).localrepo ) + $myrepos
             }
-            
             # determining build configuration based on 
             $buildconfig = 'Debug'
             switch ($mode) {
                 'debug' { $buildconfig = 'Debug' }
                 'release' { $buildconfig = 'Release' }
             }
-            
             # bootstrap psake
             Exec { .\init-psake.ps1 -repos $myrepos }
             
@@ -1009,7 +1020,8 @@ Opens the PPWCode solution 'pensiob-audit-ntservicehost'.
             'wcf',
             'test',
             'clr',
-            'stylecop'
+            'stylecop',
+			'appconfigtemplate'
             )]
         [string[]]
         $solution,
@@ -1121,7 +1133,8 @@ be used and takes precedence over the other nuget package repositories.
             'wcf',
             'test',
             'clr',
-            'stylecop'
+            'stylecop',
+			'appconfigtemplate'
                      )]
         [string[]]
         $solution,
@@ -1365,7 +1378,8 @@ working or staging area.
             'wcf',
             'test',
             'clr',
-            'stylecop',
+            'stylecop',,
+			'appconfigtemplate'
 			'all'
             )]
         [string[]]
@@ -1389,7 +1403,8 @@ working or staging area.
             'test',
             'clr',
             'stylecop',
-            'tools')
+            'tools',
+			'appconfigtemplate')
     }
     else {
         $repos = $repo
